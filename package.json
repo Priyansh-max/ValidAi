@@ -46,21 +46,21 @@
     "validation",
     "ai",
     "text-validation",
-    "slang-detection",
+    "offensive-detection",
     "gibberish-detection",
     "gemini",
     "content-moderation"
   ],
-  "author": "Your Name",
+  "author": "Priyansh Agarwal",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/validai.git"
+    "url": "git+https://github.com/Priyansh-max/ValidAi"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/validai/issues"
+    "url": "https://github.com/Priyansh-max/ValidAi/issues"
   },
-  "homepage": "https://github.com/yourusername/validai#readme",
+  "homepage": "https://github.com/Priyansh-max/ValidAi?tab=readme-ov-file#readme",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/node": "^20.11.24",
