@@ -1,10 +1,11 @@
 # ValidAI
 
-ValidAI is a powerful text validation library that uses AI to detect slang and gibberish content in text. It's perfect for content moderation, form validation, and ensuring high-quality user-generated content.
+ValidAI is a powerful text validation library that uses AI to detect offensive and gibberish content in text. It's perfect for content moderation, form validation, and ensuring high-quality user-generated content.
+Now you don't have to worry about random content being posted on to your platform by the users. or spend days writing validation rules for your Input fields.
 
 ## Features
 
-- Detect slang words in any language
+- Detect offensive words in any language
 - Identify gibberish or spam content
 - Support for multiple AI providers (currently Gemini, with plans for OpenAI and Anthropic)
 - TypeScript support
@@ -33,7 +34,8 @@ const validator = new ValidAI(
 const userInput = {
     title: "Hello World!",
     description: "This is a test description",
-    comment: "lol idk tbh"
+    morecontent: "This is a test content fuck",
+    morecontent2: "This is random gibrish fwhqfqwiofhwqhfqwoifhwq",
 };
 
 try {
@@ -44,22 +46,28 @@ try {
         success: false,
         results: {
             title: {
-                slang: false,
-                slangReason: "",
+                restricted: false,
+                restrictedReason: "",
                 gibbrish: false,
                 gibbrishReason: ""
             },
             description: {
-                slang: false,
-                slangReason: "",
+                restricted: false,
+                restrictedReason: "",
                 gibbrish: false,
                 gibbrishReason: ""
             },
-            comment: {
-                slang: true,
-                slangReason: "Contains internet slang: 'lol', 'idk', 'tbh'",
+            morecontent: {  
+                restricted: true,
+                restrictedReason: "Contains offensive words: 'fuck'",
                 gibbrish: false,
                 gibbrishReason: ""
+            },
+            morecontent2: {
+                restricted: false   ,
+                restrictedReason: "",
+                gibbrish: true,
+                gibbrishReason: "Contains gibberish: 'fwhqfqwiofhwqhfqwoifhwq'"
             }
         }
     }
@@ -89,7 +97,7 @@ constructor(apiKey: string, provider: Provider, model: string)
 
 ##### `validate(input: Record<string, any>): Promise<ValidationResponse>`
 
-Validates the provided text input for slang and gibberish content.
+Validates the provided text input for offensive and gibberish content.
 
 - `input`: Record of field names to text content
 - Returns: Promise containing validation results and overall success status
@@ -109,8 +117,8 @@ interface ValidationResponse {
 
 ```typescript
 interface ValidationResult {
-    slang: boolean;
-    slangReason: string;
+    restricted: boolean;
+    restrictedReason: string;
     gibbrish: boolean;
     gibbrishReason: string;
 }
