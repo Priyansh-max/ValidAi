@@ -15,9 +15,10 @@ const validator = new ValidAI(apiKey, "gemini", "gemini-2.0-flash");
 // Example inputs to validate
 const inputs = {
     normalText: "This is a well-structured English sentence.",
-    slangText: "yo dawg wassup lmao",
+    offensiveText: "yo dawg wassup lmao fuck man",
     gibberishText: "asdfghjkl qwerty keyboard spam",
-    mixedText: "Hello world! omg this is gr8"
+    mixedText: "Hello world! omg this is gr8",
+    moretext: "Hey bitch",
 };
 
 // Run validation
@@ -32,3 +33,43 @@ async function runExample() {
 }
 
 runExample(); 
+
+
+/*
+Output : 
+Validation Results:
+{
+  "success": false,
+  "results": {
+    "normalText": {
+      "Restricted": false,
+      "RestrictedReason": "",
+      "gibbrish": false,
+      "gibbrishReason": ""
+    },
+    "offensiveText": {
+      "Restricted": true,
+      "RestrictedReason": "The text contains offensive words: fuck.",
+      "gibbrish": false,
+      "gibbrishReason": ""
+    },
+    "gibberishText": {
+      "Restricted": false,
+      "RestrictedReason": "",
+      "gibbrish": true,
+      "gibbrishReason": "The text contains gibberish words: asdfghjkl, qwerty."
+    },
+    "mixedText": {
+      "Restricted": false,
+      "RestrictedReason": "",
+      "gibbrish": false,
+      "gibbrishReason": ""
+    },
+    "moretext": {
+      "Restricted": true,
+      "RestrictedReason": "The text contains offensive words: bitch.",
+      "gibbrish": false,
+      "gibbrishReason": ""
+    }
+  }
+}*/
