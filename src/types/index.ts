@@ -3,9 +3,9 @@
  */
 export interface ValidationResult {
     /** Whether the text contains slang */
-    slang: boolean;
+    restricted: boolean;
     /** Reason why text was flagged as slang, if applicable */
-    slangReason: string;
+    restrictedReason: string;
     /** Whether the text contains gibberish */
     gibbrish: boolean;
     /** Reason why text was flagged as gibberish, if applicable */
@@ -26,4 +26,4 @@ export interface ValidationResponse {
  * Supported AI providers
  * Currently only supports Gemini, with plans to add OpenAI and Anthropic
  */
-export type Provider = "gemini"; 
+export type Provider = "gemini";

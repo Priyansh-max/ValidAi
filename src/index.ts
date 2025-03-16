@@ -44,7 +44,7 @@ export class ValidAI {
         try {
             // Validate texts using the provider
             const validationResults = await this.provider.validate(textsToValidate);
-            const success = !Object.values(validationResults).some(result => result.slang || result.gibbrish);
+            const success = !Object.values(validationResults).some(result => result.restricted || result.gibbrish);
             
             return {
                 success,
@@ -55,8 +55,8 @@ export class ValidAI {
             // Return error result for all fields
             for (const key in textsToValidate) {
                 result[key] = {
-                    slang: false,
-                    slangReason: "Error validating the text",
+                    restricted: false,
+                    restrictedReason: "Error validating the text",
                     gibbrish: false,
                     gibbrishReason: "Error validating the text"
                 };
