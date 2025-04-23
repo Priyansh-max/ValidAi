@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.8.2"}
+{"root":["./src/index.ts","./src/__tests__/validai.test.ts","./src/__tests__/providers/geminiprovider.test.ts","./src/examples/basic-usage.ts","./src/providers/gemini.ts","./src/types/index.ts"],"version":"5.7.3"}
