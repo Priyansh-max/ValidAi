@@ -9,10 +9,12 @@ jest.mock('../providers/gemini', () => {
                 const results: Record<string, ValidationResult> = {};
                 for (const [key, value] of Object.entries(texts)) {
                     results[key] = {
-                        slang: value.includes('lol') || value.includes('omg'),
-                        slangReason: value.includes('lol') ? "Contains slang: 'lol'" : "",
+                        restricted: value.includes('lol') || value.includes('omg'),
+                        restrictedReason: value.includes('lol') ? "Contains slang: 'lol'" : "",
                         gibbrish: value.includes('asdf'),
-                        gibbrishReason: value.includes('asdf') ? "Contains gibberish text" : ""
+                        gibbrishReason: value.includes('asdf') ? "Contains gibberish text" : "",
+                        InputValid: value.includes('asdf') ? false : true,
+                        InputValidReason: value.includes('asdf') ? "Contains gibberish text" : ""
                     };
                 }
                 return results;
@@ -46,16 +48,18 @@ describe('ValidAI', () => {
             const input = {
                 normal: 'Hello world',
                 slang: 'lol what up',
-                gibberish: 'asdf keyboard spam'
+                gibberish: 'asdf keyboard spam',
+                email: "asdfddwqdw"
             };
 
             const result = await validator.validate(input);
             
             expect(result.success).toBe(false); // Because we have slang and gibberish
-            expect(result.results.normal.slang).toBe(false);
-            expect(result.results.slang.slang).toBe(true);
+            expect(result.results.normal.restricted).toBe(false);
+            expect(result.results.slang.restricted).toBe(true);
             expect(result.results.gibberish.gibbrish).toBe(true);
-        });
+            expect(result.results.email.InputValid).toBe(false);
+        })
 
         it('should handle empty input', async () => {
             const input = {};

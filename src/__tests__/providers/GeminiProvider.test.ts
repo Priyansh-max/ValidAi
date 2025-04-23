@@ -58,14 +58,14 @@ describe('GeminiProvider', () => {
                 response: {
                     text: async () => `{
                         "text1": {
-                            "slang": false,
-                            "slangReason": "",
+                            "restricted": false,
+                            "restrictedReason": "",
                             "gibbrish": false,
                             "gibbrishReason": ""
                         },
                         "text2": {
-                            "slang": true,
-                            "slangReason": "Contains slang words",
+                            "restricted": true,
+                            "restrictedReason": "Contains slang words",
                             "gibbrish": false,
                             "gibbrishReason": ""
                         }
@@ -82,8 +82,8 @@ describe('GeminiProvider', () => {
 
             expect(result).toHaveProperty('text1');
             expect(result).toHaveProperty('text2');
-            expect(result.text1.slang).toBe(false);
-            expect(result.text2.slang).toBe(true);
+            expect(result.text1.restricted).toBe(false);
+            expect(result.text2.restricted).toBe(true);
         });
 
         it('should handle API errors', async () => {
