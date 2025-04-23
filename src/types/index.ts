@@ -10,6 +10,10 @@ export interface ValidationResult {
     gibbrish: boolean;
     /** Reason why text was flagged as gibberish, if applicable */
     gibbrishReason: string;
+    /** Whether the text is valid according to the field name */
+    InputValid: boolean;
+    /** Reason why text was flagged as invalid, if applicable */
+    InputValidReason: string;
 }
 
 /**
