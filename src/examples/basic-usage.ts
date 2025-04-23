@@ -14,11 +14,14 @@ const validator = new ValidAI(apiKey, "gemini", "gemini-2.0-flash");
 
 // Example inputs to validate
 const inputs = {
-    normalText: "This is a well-structured English sentence.",
-    offensiveText: "yo dawg wassup lmao fuck man",
-    gibberishText: "asdfghjkl qwerty keyboard spam",
-    mixedText: "Hello world! omg this is gr8",
-    moretext: "Hey bitch",
+    email: "john.doe@example.com",
+    phone: "+1234567890",
+    address: "123 Main St, Anytown, USA",
+    zip: "12345",
+    city: "Anytown",
+    state: "CA",
+    country: "USA",
+    email1: "priyanshagarwal@jklu.edu.in"
 };
 
 // Run validation
