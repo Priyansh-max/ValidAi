@@ -58,7 +58,9 @@ export class ValidAI {
                     restricted: false,
                     restrictedReason: "Error validating the text",
                     gibbrish: false,
-                    gibbrishReason: "Error validating the text"
+                    gibbrishReason: "Error validating the text",
+                    InputValid: false,
+                    InputValidReason: "Error validating the text",
                 };
             }
             return {
